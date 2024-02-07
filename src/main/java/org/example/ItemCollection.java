@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Arrays;
+
 public class ItemCollection {
     public Item[] itemArr;
 
@@ -21,11 +23,14 @@ public class ItemCollection {
         }
     }
 
-    // Deep copy method
-//    public Item[] deepCopy() {
-//        ItemCollection itemCollection = new ItemCollection();
-//
-//    }
+    public ItemCollection deepCopy() {
+        ItemCollection icCopy = new ItemCollection();
+        icCopy.reSize(this.getSize());
+        for (int i=0; i< icCopy.getSize(); i++) {
+            icCopy.set(i, this.itemArr[i].deepCopy());
+        }
+        return icCopy;
+    }
 
     public void set(int index, Item i) {
         if (index > itemArr.length) {
@@ -59,11 +64,14 @@ public class ItemCollection {
         this.itemArr = temp;
     }
 
-//    @Override
-//    public boolean equals() {
-//
-//    }
-
-
+    public boolean equals(ItemCollection ic) {
+        if (this.getSize() != ic.getSize()) {
+            return false;
+        }
+        for (int i=0; i<this.getSize(); i++) {
+            if (!this.itemArr[i].equals(ic.get(i))) return false;
+        }
+        return true;
+    }
 
 }
