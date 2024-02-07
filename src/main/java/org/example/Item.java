@@ -9,9 +9,9 @@ public class Item {
 
     // Default Constructor
     public Item() {
-        name = "Laptop";
-        category = "Electronic_Device";
-        cost = 1000.0;
+        name = "Default_value";
+        category = "Place_holder";
+        cost = 0.0;
     }
 
     // Regular Constructor
